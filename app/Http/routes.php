@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix'=>'api'], function(){
+Route::group(['middleware' => 'cors','prefix'=>'api'], function(){
     Route::resource('users', 'UserController');
     Route::post('auth/facebook', 'AuthController@facebook');
     Route::post('auth/login', 'AuthController@login');
