@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-cors": "0.7.x",
-        "jenssegers/mongodb": "dev-master",
+        "jenssegers/mongodb": "2.2.x",
         "tymon/jwt-auth": "0.5.*",
         "guzzlehttp/guzzle": "^6.1"
     },
