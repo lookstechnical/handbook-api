@@ -17,8 +17,8 @@ class Drill extends Eloquent
 		$drill->media = $data['media'];
 		$drill->instructions = $data['instructions'];
 		$drill->coaching_points = $data['coaching_points'];
-		$drill->access = $data['private'];
-		$drill->user = 
+		//$drill->access = $data['private'];
+		//$drill->user = 
 		
 
 		$drill->save();
