@@ -24,4 +24,5 @@ Route::group(['prefix'=>'api'], function(){
     Route::get('me', 'MeController@index');
     Route::resource('games', 'GamesController');
     Route::resource('sessions', 'SessionController');
+    Route::resource('drills', 'DrillController');
 });
