@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Drill;
+use Input;
 
 class DrillController extends Controller
 {
