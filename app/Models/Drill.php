@@ -2,7 +2,7 @@
 namespace App\Models;
 use Jenssegers\Mongodb\Model as Eloquent;
 
-class Game extends Eloquent
+class Drill extends Eloquent
 {
 	protected $collection = "drills";
 	
