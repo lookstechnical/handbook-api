@@ -26,7 +26,18 @@ class DrillController extends Controller
     {
         //
         $drills = Drill::all();
-        return response()->json($drills,200);
+        $ret = [];
+        $i = 1;
+        $r = 0;
+        foreach($drills as $drill){
+	        $i++;
+	        $ret[$r][] = $drill;
+	        if($i == 4){
+		        $i = 1;
+		        $r++;
+	        }
+        }
+        return response()->json($ret,200);
        
     }
     
