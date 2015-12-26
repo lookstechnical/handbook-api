@@ -32,7 +32,7 @@ class DrillController extends Controller
         foreach($drills as $drill){
 	        $i++;
 	        $ret[$r][] = $drill;
-	        if($i == 4){
+	        if($i == 5){
 		        $i = 1;
 		        $r++;
 	        }
