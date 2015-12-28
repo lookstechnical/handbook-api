@@ -27,7 +27,7 @@ class TeamController extends Controller
 		
 	}
 	
-	public function store()
+	public function store(Request $request)
 	{
 		$club = Club::where('name',Input::get('club_name'));
 		if(empty($club)){
@@ -39,7 +39,7 @@ class TeamController extends Controller
 			$team = Club::createTeam(Input::all());
 		}
 		
-		return response()->json($team,200);
+		return response()->json($games,200);
 
 	}
 	
