@@ -21,8 +21,14 @@ Route::group(['prefix'=>'api'], function(){
     Route::post('auth/facebook', 'AuthController@facebook');
     Route::post('auth/login', 'AuthController@login');
     Route::post('auth/register', 'AuthController@register');
+    
     Route::get('me', 'MeController@index');
     Route::resource('games', 'GamesController');
     Route::resource('sessions', 'SessionController');
     Route::resource('drills', 'DrillController');
+    
+    Route::post('teams/:id/players', 'TeamController@addPlayer');
+    Route::resource('teams', 'TeamController');
+    
+    
 });

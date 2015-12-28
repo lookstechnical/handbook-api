@@ -11,7 +11,7 @@ class Club Extends Eloquent
 	public static function createNew($data)
 	{
 		$c = new Club();
-		$c->name = $data['club'];
+		$c->name = $data['club_name'];
 		$c->save();
 		return $c;
 	}
