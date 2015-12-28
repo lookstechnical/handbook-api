@@ -10,8 +10,7 @@
 namespace App\Http\Controllers;
 
 use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Hash;
+use App\Http\Controllers\Controller;
 use Config;
 use Validator;
 use Illuminate\Http\Request;
@@ -22,10 +21,7 @@ use App\Model\Club;
 
 class TeamController extends Controller 
 {
-	public function index()
-	{
-		
-	}
+
 	
 	public function store(Request $request)
 	{
