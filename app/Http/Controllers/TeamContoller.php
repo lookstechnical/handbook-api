@@ -25,12 +25,12 @@ class TeamController extends Controller
 	
 	public function store(Request $request)
 	{
-		$club = Club::where('name',Input::get('club_name'));
+		$club = Club::where('name',Input::get('club_name'))->first();
 		if(empty($club)){
 			$club = Club::createNew(Input::all());
 		}
 		
-		$team = $club->teams()->where('name',Input::get('team_name'));
+		$team = $club->teams()->where('name',Input::get('team_name'))->first();
 		if(empty($team)){
 			$team = Club::createTeam(Input::all());
 		}
