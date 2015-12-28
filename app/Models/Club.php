@@ -16,7 +16,7 @@ class Club Extends Eloquent
 		return $c;
 	}
 	
-	public static function createNewTeam($data)
+	public function createNewTeam($data)
 	{
 		$t = new Team();
 		$t->name = $data['team_name'];		
