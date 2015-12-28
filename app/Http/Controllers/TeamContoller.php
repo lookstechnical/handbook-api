@@ -35,7 +35,7 @@ class TeamController extends Controller
 			$team = $club->createNewTeam(Input::all());
 		}
 		
-		return response()->json($games,200);
+		return response()->json($team,200);
 
 	}
 	
