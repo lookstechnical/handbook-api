@@ -16,8 +16,8 @@ use Validator;
 use Illuminate\Http\Request;
 use App\User;
 use Input;
-use App\Model\Team;
-use App\Model\Club;
+use App\Models\Team;
+use App\Models\Club;
 
 class TeamController extends Controller 
 {
