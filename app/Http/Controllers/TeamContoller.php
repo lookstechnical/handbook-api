@@ -30,7 +30,7 @@ class TeamController extends Controller
 			$club = Club::createNew(Input::all());
 		}
 		
-		$team = $club->teams->where('name',Input::get('team_name'));
+		$team = $club->teams()->where('name',Input::get('team_name'));
 		if(empty($team)){
 			$team = Club::createTeam(Input::all());
 		}
