@@ -31,4 +31,8 @@ Route::group(['prefix'=>'api'], function(){
     Route::resource('teams', 'TeamController');
     
     
+    Route::post('clearAll', 'UtilsController@removeALL');
+
+    
+    
 });
