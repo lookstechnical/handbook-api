@@ -39,7 +39,7 @@ class TeamController extends Controller
 		
 		// else add user to team 
 		
-		$user = User::where('_id', $request->get('user_id'));
+		$user = User::where('_id', $request->get('user_id'))->first();
 		
 		$role = new Role();
 		$role->club = $club->toArray();
@@ -57,7 +57,7 @@ class TeamController extends Controller
 	{
 		$club = Club::find($request->get('club_id'));
 		
-		$team = $club->teams()->where('_id','team_id');
+		$team = $club->teams()->where('_id','team_id')->first();
 		
 		$user = User::where('email',$request->get('email'))->first();
 		if(empty($user)){
