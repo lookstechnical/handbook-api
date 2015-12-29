@@ -9,20 +9,9 @@ class Role Extends Eloquent
 {
 	protected $collection = 'roles';
 	 
-	public static function createNew($data)
+	public static function createNew($data,$club,$team)
 	{
-		
-			//get club if exists or create
-		$club = Club::where('name',$data['club'])->first();
-		if(empty($club)){
-			$club = Club::createNew($data);
-		}
-		
-		$team = $club->teams()->where('name',$data['team'])->first();
-		if(empty($team)){
-			$team = $club->createNewTeam($data);
-		}
-		
+				
 		$r = new Role();
 		$r->club = $club->toArray();
 		$r->team = $team->toArray();

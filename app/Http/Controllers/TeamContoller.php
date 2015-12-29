@@ -18,6 +18,7 @@ use App\User;
 use Input;
 use App\Models\Team;
 use App\Models\Club;
+use App\Models\User\Role;
 
 class TeamController extends Controller 
 {
@@ -35,8 +36,51 @@ class TeamController extends Controller
 			$team = $club->createNewTeam(Input::all());
 		}
 		
+		// team exists and has a user add pnding user and notify original creator that user wants access
+		
+		// else add user to team 
+		
+		$user = User::getAuthUser();
+		
+		$role = new Role();
+		$role->club = $club->toArray();
+		$role->team = $team->toArray();
+		$role->role = 'coach';
+		
+		$user->roles()->save($role);
+		
 		return response()->json($team,200);
 
+	}
+	
+	// add a user for player if not exists or add existing user to team
+	public function addPlayer(Request $request)
+	{
+		$club = Club::find($request->get('club_id'));
+		
+		$team = $club->teams()->where('_id','team_id');
+		
+		$user = User::where('email',$request->get('email'))->first();
+		if(empty($user)){
+			$user = new User();
+			$user->first_name = $request->get('first_name');
+			$user->last_name = $request->get('last_name');
+			$user->email = $request->get('email');
+			$user->position = $request->get('position');
+			$user->active = false;
+			$user->save();
+		}
+		
+		//team
+		$role = new Role();
+		$role->club = $club->toArray();
+		$role->team = $team->toArray();
+		$role->role = 'player';
+		
+		$user->roles()->save($role);
+		
+		return response()->json($user,200);
+		
 	}
 	
 	
