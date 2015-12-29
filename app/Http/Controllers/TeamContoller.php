@@ -15,7 +15,6 @@ use Config;
 use Validator;
 use Illuminate\Http\Request;
 use App\User;
-use Input;
 use App\Models\Team;
 use App\Models\Club;
 use App\Models\User\Role;
@@ -26,21 +25,21 @@ class TeamController extends Controller
 	
 	public function store(Request $request)
 	{
-		$club = Club::where('name',Input::get('club_name'))->first();
+		$club = Club::where('name',$request->get('club_name'))->first();
 		if(empty($club)){
-			$club = Club::createNew(Input::all());
+			$club = Club::createNew($request->all());
 		}
 		
-		$team = $club->teams()->where('name',Input::get('team_name'))->first();
+		$team = $club->teams()->where('name',$request->get('team_name'))->first();
 		if(empty($team)){
-			$team = $club->createNewTeam(Input::all());
+			$team = $club->createNewTeam($request->all());
 		}
 		
 		// team exists and has a user add pnding user and notify original creator that user wants access
 		
 		// else add user to team 
 		
-		$user = User::getAuthUser();
+		$user = User::where('_id', $request->get('user_id'));
 		
 		$role = new Role();
 		$role->club = $club->toArray();
