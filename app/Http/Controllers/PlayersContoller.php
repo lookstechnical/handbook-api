@@ -40,19 +40,23 @@ class PlayersController extends Controller
 				$user->position = $request->get('position');
 				$user->active = false;
 				$user->save();
-			}
+			
 		
 			//team
-			$role = new Role();
-			$role->club_id = $club->_id;
-			$role->club_name = $club->name;
-			$role->team_id = $team->_id;
-			$role->team_name = $team->name;
-			$role->role = 'player';
+				$role = new Role();
+				$role->club_id = $club->_id;
+				$role->club_name = $club->name;
+				$role->team_id = $team->_id;
+				$role->team_name = $team->name;
+				$role->role = 'player';
 			
-			$user->roles()->save($role);
+				$user->roles()->save($role);
 			
-			return response()->json($user,200);
+			
+				return response()->json($user,200);
+			} else{
+				return response()->json(array('message'=>'update'),200);
+			}
 		
 
 	}
