@@ -25,7 +25,7 @@ class PlayersController extends Controller
 	
 	public function store(Request $request)
 	{
-		$club = Club::find($request->get('club_id'));
+		$club = Club::where('_id',$request->get('club_id'))->first();
 		
 		$team = $club->teams()->where('_id','team_id')->first();
 		
