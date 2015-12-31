@@ -32,7 +32,21 @@ class TeamController extends Controller
 		
 		$teamArray = $team->toArray();
 		
-		$teamArray['players'] = User::where('roles.team_id',$id)->where('roles.role','player')->get();
+		$players = User::where('roles.team_id',$id)->where('roles.role','player')->get();
+		
+		$ret = [];
+        $i = 1;
+        $r = 0;
+        foreach($player as $players){
+	        $i++;
+	        $ret[$r][] = $player;
+	        if($i == 5){
+		        $i = 1;
+		        $r++;
+	        }
+        }
+			
+		$teamArray['players'] = $ret;
 		
 		return response()->json($teamArray,200);
     }
