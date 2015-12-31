@@ -28,6 +28,7 @@ Route::group(['prefix'=>'api'], function(){
     Route::resource('drills', 'DrillController');
     Route::resource('players', 'PlayersController');
     Route::resource('teams', 'TeamController');
+    Route::resource('clubs', 'ClubsController');
     
     
     Route::post('clearAll', 'UtilsController@clearAll');
