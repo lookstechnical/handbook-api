@@ -9,10 +9,5 @@ class Team Extends Eloquent
 {
 	$collection = 'teams';	
 	
-	protected $appends = ['players'];
 	
-	public function getPlayersAttribute()
-	{
-		return [];
-	}
 }

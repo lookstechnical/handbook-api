@@ -29,6 +29,11 @@ class TeamController extends Controller
 			'teams._id', $id)->first();
 			
 		$team = $club->teams()->where('_id',$id)->first();
+		
+		$teamArray = $team->toArray();
+		
+		$teamArray['players'] = User::where('roles.team_id',$id)->where('roles.role','player')->get();
+		
 		return response()->json($team,200);
     }
 	
