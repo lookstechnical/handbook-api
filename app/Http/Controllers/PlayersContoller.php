@@ -25,20 +25,20 @@ class PlayersController extends Controller
 	
 	public function store(Request $request)
 	{
-		var_dump($request->club_id));die();
-		$club = Club::where('_id',$request->club_id)->first();
+		var_dump($request->input('club_id'));die();
+		$club = Club::where('_id',$request->input('club_id'))->first();
 		
 		
 		
-			$team = $club->teams()->where('_id',$request->team_id)->first();
+			$team = $club->teams()->where('_id',$request->input('team_id'))->first();
 		
-			$user = User::where('email',$request->email)->first();
+			$user = User::where('email',$request->input('email'))->first();
 			if(empty($user)){
 				$user = new User();
-				$user->first_name = $request->first_name;
-				$user->last_name = $request->last_name;
-				$user->email = $request->email;
-				$user->position = $request->position;
+				$user->first_name = $request->input('first_name');
+				$user->last_name = $request->input('last_name');
+				$user->email = $request->input('email');
+				$user->position = $request->input('position');
 				$user->active = false;
 				$user->save();
 			}
