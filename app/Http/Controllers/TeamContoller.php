@@ -37,7 +37,7 @@ class TeamController extends Controller
 		$ret = [];
         $i = 1;
         $r = 0;
-        foreach($player as $players){
+        foreach($players as $player){
 	        $i++;
 	        $ret[$r][] = $player;
 	        if($i == 5){
