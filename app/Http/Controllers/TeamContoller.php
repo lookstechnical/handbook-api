@@ -25,8 +25,10 @@ class TeamController extends Controller
 
     public function show($id)
     {
-    	$team = DB::collection('clubs')->where(
-			'teams._id', $id)->project(array( 'teams.$' => 1 ) )->get();
+    	$club = Club::where(
+			'teams._id', $id)->get();
+			
+		$team = $club->teams()->where('name',$request->get('team_name'))->first();
 		return response()->json($team,200);
     }
 	
