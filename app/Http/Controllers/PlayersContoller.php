@@ -44,8 +44,10 @@ class PlayersController extends Controller
 		
 			//team
 			$role = new Role();
-			$role->club = $club->toArray();
-			$role->team = $team->toArray();
+			$role->club_id = $club->_id;
+			$role->club_name = $club->name;
+			$role->team_id = $team->_id;
+			$role->team_name = $team->name;
 			$role->role = 'player';
 			
 			$user->roles()->save($role);
