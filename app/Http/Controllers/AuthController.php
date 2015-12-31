@@ -57,7 +57,7 @@ class AuthController extends Controller
 
 
 
-        return response()->json(['token' => $this->createToken($user)]);
+        return response()->json($user,200);
     }
 
     public function login(Request $request)
