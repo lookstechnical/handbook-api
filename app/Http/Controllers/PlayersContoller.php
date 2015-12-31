@@ -55,7 +55,7 @@ class PlayersController extends Controller
 			
 				return response()->json($user,200);
 			} else{
-				return response()->json(array('message'=>'update'),200);
+				return response()->json(array('message'=>'user registered'),200);
 			}
 		
 
