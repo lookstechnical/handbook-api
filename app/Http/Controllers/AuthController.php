@@ -47,7 +47,7 @@ class AuthController extends Controller
             return response()->json(['message' => $validator->messages()], 400);
         }
 
-        $user = new User;
+        $user = new User();
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->birthday = $request->input('birthday');
