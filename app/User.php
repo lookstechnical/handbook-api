@@ -36,7 +36,7 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
      */
     protected $hidden = ['password', 'remember_token'];
     
-    protected $appends = ['currentRole']
+    protected $appends = ['currentRole'];
     
     //protected $dates = ['dob'];
     
