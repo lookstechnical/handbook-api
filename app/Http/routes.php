@@ -26,8 +26,7 @@ Route::group(['prefix'=>'api'], function(){
     Route::resource('games', 'GamesController');
     Route::resource('sessions', 'SessionController');
     Route::resource('drills', 'DrillController');
-    
-    Route::post('teams/:id/players', 'TeamController@addPlayer');
+    Route::resource('players', 'PlayersController');
     Route::resource('teams', 'TeamController');
     
     

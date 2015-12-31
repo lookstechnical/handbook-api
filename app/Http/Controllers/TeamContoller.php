@@ -52,35 +52,7 @@ class TeamController extends Controller
 
 	}
 	
-	// add a user for player if not exists or add existing user to team
-	public function addPlayer(Request $request)
-	{
-		$club = Club::find($request->get('club_id'));
-		
-		$team = $club->teams()->where('_id','team_id')->first();
-		
-		$user = User::where('email',$request->get('email'))->first();
-		if(empty($user)){
-			$user = new User();
-			$user->first_name = $request->get('first_name');
-			$user->last_name = $request->get('last_name');
-			$user->email = $request->get('email');
-			$user->position = $request->get('position');
-			$user->active = false;
-			$user->save();
-		}
-		
-		//team
-		$role = new Role();
-		$role->club = $club->toArray();
-		$role->team = $team->toArray();
-		$role->role = 'player';
-		
-		$user->roles()->save($role);
-		
-		return response()->json($user,200);
-		
-	}
+	
 	
 	
 }
