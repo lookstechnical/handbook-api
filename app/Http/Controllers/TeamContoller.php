@@ -34,7 +34,7 @@ class TeamController extends Controller
 		
 		$teamArray['players'] = User::where('roles.team_id',$id)->where('roles.role','player')->get();
 		
-		return response()->json($team,200);
+		return response()->json($teamArray,200);
     }
 	
 	public function store(Request $request)
