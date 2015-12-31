@@ -36,6 +36,8 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
      */
     protected $hidden = ['password', 'remember_token'];
     
+    protected $appends = ['currentRole']
+    
     //protected $dates = ['dob'];
     
     public function roles()
@@ -67,5 +69,15 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
         
         return $user;
 
+    }
+    
+    
+    public function getCurrentRoleAttribute(()
+    {
+    	if(empty($this->currentRole)){
+	    	return $this->roles[0];
+    	} else{
+	    	return $this->currentRole;
+    	}
     }
 }
