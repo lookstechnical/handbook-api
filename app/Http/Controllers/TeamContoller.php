@@ -42,8 +42,10 @@ class TeamController extends Controller
 		$user = User::where('_id', $request->get('user_id'))->first();
 		
 		$role = new Role();
-		$role->club = $club->toArray();
-		$role->team = $team->toArray();
+		$role->club_id = $club->_id;
+		$role->club_name = $club->name;
+		$role->team_id = $team->_id;
+		$role->team_name = $team->name;
 		$role->role = 'coach';
 		
 		$user->roles()->save($role);
