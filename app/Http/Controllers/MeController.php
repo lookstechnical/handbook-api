@@ -22,8 +22,6 @@ class MeController extends Controller
 
     public function index() {
         $user = User::getAuthUser();
-        
-        $user->setCurrentRole();
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
     }
