@@ -22,6 +22,12 @@ use App\Models\User\Role;
 class TeamController extends Controller 
 {
 
+    public function show($id)
+    {
+    	$team = DB::collection('clubs')->where(
+			'teams._id', $id)->project(array( 'teams.$' => 1 ) )->get();
+		return response()->json($team,200);
+    }
 	
 	public function store(Request $request)
 	{
