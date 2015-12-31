@@ -25,6 +25,7 @@ class PlayersController extends Controller
 	
 	public function store(Request $request)
 	{
+		var_dump($request->get('club_id'));die();
 		$club = Club::where('_id',$request->get('club_id'))->first();
 		
 		if(!empty($club)){	
