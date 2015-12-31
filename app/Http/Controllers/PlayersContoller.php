@@ -19,7 +19,7 @@ use App\Models\Team;
 use App\Models\Club;
 use App\Models\User\Role;
 
-class TeamController extends Controller 
+class PlayersController extends Controller 
 {
 
 	
