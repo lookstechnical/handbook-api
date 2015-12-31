@@ -18,6 +18,7 @@ use App\User;
 use App\Models\Team;
 use App\Models\Club;
 use App\Models\User\Role;
+use DB;
 
 class TeamController extends Controller 
 {
