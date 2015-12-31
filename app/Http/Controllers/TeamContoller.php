@@ -28,7 +28,7 @@ class TeamController extends Controller
     	$club = Club::where(
 			'teams._id', $id)->first();
 			
-		$team = $club->teams()->where('name',$request->get('team_name'))->first();
+		$team = $club->teams()->where('_id',$id)->first();
 		return response()->json($team,200);
     }
 	
