@@ -72,7 +72,7 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     }
     
     
-    public function getCurrentRoleAttribute(()
+    public function getCurrentRoleAttribute()
     {
     	if(empty($this->currentRole)){
 	    	return $this->roles[0];
