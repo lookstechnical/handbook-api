@@ -27,6 +27,9 @@ class PlayersController extends Controller
 	{
 		$club = Club::where('_id',$request->get('club_id'))->first();
 		
+		if($club){
+			
+		
 		$team = $club->teams()->where('_id','team_id')->first();
 		
 		$user = User::where('email',$request->get('email'))->first();
@@ -49,6 +52,9 @@ class PlayersController extends Controller
 		$user->roles()->save($role);
 		
 		return response()->json($user,200);
+		} else{
+			return response()->json(array('message'=>'cant find club',501);
+		}
 
 	}
 	
