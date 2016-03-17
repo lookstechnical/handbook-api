@@ -62,7 +62,7 @@ class UserController extends Controller
     	Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
             $m->from('handbook@lookstechnical.co.uk', 'Handbook');
 
-            $m->to('info@lookstechnical.co.uk', 'handbook')->subject('Welcome');
+            $m->to($user->email, $user->name)->subject('Welcome');
         });
 
     	
