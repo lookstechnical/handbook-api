@@ -10,6 +10,7 @@ use Input;
 use App\User;
 use App\Models\User\Role;
 use Hash;
+use Mail;
 
 class UserController extends Controller
 {
@@ -42,7 +43,37 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $existing_user = User::where('email',Input::get('email'))->first();
+	    if($existing_user){
+		    $return['data'] = null;
+	   		$return['message'] = 'User already exists';
+	    	$return['status'] = 500;
+			return response()->json($return,500);
+	    }
+	    
+    	$user = new User();
+    	$user->email =  Input::get('email');
+    	$user->name = Input::get('name');
+    	$user->club = Input::get('club');
+    	$user->sport = Input::get('sport');
+    	    	
+    	$user->save();
+    	
+    	Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
+            $m->from('handbook@lookstechnical.co.uk', 'Handbook');
+
+            $m->to('info@lookstechnical.co.uk', 'handbook')->subject('Welcome');
+        });
+
+    	
+    	Mail::send('email.reg', ['user' => $user], function ($m) use ($user) {
+            $m->from('handbook@lookstechnical.co.uk', 'Handbook');
+
+            $m->to('info@lookstechnical.co.uk', 'handbook')->subject('User Registered');
+        });
+    	
+    	
+    	return response()->json($user,200);    }
 
     /**
      * Display the specified resource.
@@ -166,7 +197,11 @@ class UserController extends Controller
 	    
     	$user = new User();
     	$user->email =  Input::get('email');
-    	$user->password = Hash::make(Input::get('password'));
+    	$user->name = Input::get('name');
+    	$user->club = Input::get('club');
+    	$user->sport = Input::get('sport');
+    	
+    	/*$user->password = Hash::make(Input::get('password'));
     	$user->first_name = Input::get('first_name');
     	$user->last_name = Input::get('last_name');
     	$user->dob = Input::get('birthday');
@@ -177,11 +212,11 @@ class UserController extends Controller
     	
     	if(!empty(Input::get('fb_id'))){
     		$user->fb_id = Input::get('fb_id');
-    	}
+    	}*/
     	
     	$user->save();
-    	
-    	return $user;
+    	$user->response_message = "Thank You an email has been sent to you";
+    	return response()->json($user,200);
     	
     }
 }
