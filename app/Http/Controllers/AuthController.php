@@ -37,8 +37,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ]);
@@ -48,8 +46,6 @@ class AuthController extends Controller
         }
 
         $user = new User();
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
         $user->birthday = $request->input('birthday');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
@@ -63,15 +59,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+		//return response()->json(($credentials));
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => 'username or password invalid'], 401);
             }
         } catch (JWTException $e) {
             // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->json(['error' => 'api error'], 500);
         }
 
         // if no errors are encountered we can return a JWT

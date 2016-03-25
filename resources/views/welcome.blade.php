@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>handbook home react</title>
-        <meta name="description" content="">
+        <title>handbook :  the coaching app : plan : deliver : reflect</title>
+        <meta name="description" content="The coaching app, manage your team, plan your training sessions, view create and share drills, skills and small sided games in the library. Manage your games, team selections and discuss the latest coaching topics with a community of coaches">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
